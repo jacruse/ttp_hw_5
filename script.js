@@ -1,5 +1,6 @@
 var num_cols = 5;
 var num_rows = 4;
+var mouse_down = false;
 var plus_columns = document.getElementById( "inc_col" ),
     minus_columns = document.getElementById( 'dec_col' ),
     plus_rows = document.getElementById( 'inc_row' ),
@@ -71,7 +72,9 @@ decrease_rows = function() {
 }
 
 change_color = function(e) {
-    e.target.style.backgroundColor = document.getElementById( 'choice' ).value;
+    if (mouse_down) {
+	e.target.style.backgroundColor = document.getElementById( 'choice' ).value;
+    }
 }
 
 fill_all = function() {
@@ -88,7 +91,7 @@ fill_empty = function() {
     for (let i = 0; i < num_rows; i++) {
 	for (let j = 0; j < num_cols; j++) {
 	    var cell = tbl.children[i].children[j];
-	    if ( cell.style.backgroundColor === "grey" ) {
+	    if ( cell.style.backgroundColor != "cyan" && cell.style.backgroundColor != "magenta" && cell.style.backgroundColor != "yellow" ) {
 		cell.style.backgroundColor = document.getElementById( 'choice' ).value;
 	    }
 	}
@@ -104,6 +107,14 @@ clear_all = function() {
     }
 }
 
+toggle_down = function() {
+    mouse_down = true;
+}
+
+toggle_up = function() {
+    mouse_down = false;
+}
+
 plus_columns.addEventListener( 'mousedown', increase_columns );
 minus_columns.addEventListener( 'mousedown', decrease_columns );
 
@@ -115,4 +126,8 @@ fill_empty_but.addEventListener( 'mousedown', fill_empty );
 clear_all_but.addEventListener( 'mousedown', clear_all );
 
 var tbody = document.getElementById('unit');
-tbody.addEventListener( 'mousedown', change_color );
+tbody.addEventListener( 'mouseover', change_color );
+
+document.addEventListener( 'mousedown', toggle_down );
+document.addEventListener( 'mouseup', toggle_up );
+
