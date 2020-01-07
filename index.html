@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
     <meta charset="UTF-8">
     <title>Matrix</title>
 </head>
@@ -11,14 +10,59 @@
     <div class="container">
         <div class="col" align="center">
             <h3>COL</h3>
-            <input type="submit" value="+">
-            <input type="submit" value="-">
+            <button id="inc_col" type="button">+</button>
+            <button id="dec_col" type="button">-</button>
         </div>
         <div class="row" align="left">
             <h3>ROW</h3>
-            <input type="submit" value="+">
-            <input type="submit" value="-">
+            <button id="inc_row" type="button">+</button>
+            <button id="dec_row" type="button">-</button>
         </div>
     </div>
+
+    <table>
+      <tbody id="unit">
+	<tr>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+      </tbody>
+    </table>
+
+    <select id="choice">
+      <option value="cyan">Cyan</option>
+      <option value="magenta">Magenta</option>
+      <option value="yellow">Yellow</option>
+    </select>
+
+    <button id="fill_all" type="button">Fill all cells</button>
+    <button id="fill_empty" type="button">Fill all empty cells</button>
+    <button id="clear_all" type="button">Clear all cells</button>
+    
+    <script src="./script.js"></script>
 </body>
 </html>
